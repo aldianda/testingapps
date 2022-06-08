@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1703.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoomby-Clone", "Zoomby-Clone\Zoomby-Clone.csproj", "{0145485F-DB12-4B60-8515-D0BD58C67659}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0145485F-DB12-4B60-8515-D0BD58C67659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0145485F-DB12-4B60-8515-D0BD58C67659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0145485F-DB12-4B60-8515-D0BD58C67659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0145485F-DB12-4B60-8515-D0BD58C67659}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E3544EA-AD75-4F57-8C52-C4606A4935CF}
+	EndGlobalSection
+EndGlobal

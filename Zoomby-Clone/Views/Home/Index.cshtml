@@ -1,0 +1,148 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section>
+    <div class="form-group row">
+        <label class="control-label col-md-2">
+            Kartu
+        </label>
+        <div class="form-control col-md-6">
+            <select name="pic" class="form-control slect2" id="Pic">
+                <option value="">--PIC--</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-2">
+            Pic
+        </label>
+        <div class="form-control col-md-6">
+            <select name="Zoom" class="form-control slect2" id="Zoom">
+                <option value="">--Zoom--</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-2">
+            Start Date
+        </label>
+        <div class="col-md-6 form-control">
+            <input id="StartDate" type="date" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-2">
+            End Date
+        </label>
+        <div class="col-md-6 form-control">
+            <input id="EndDate" type="date" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-2">
+            Agenda
+        </label>
+        <div class="col-md-6 form-control">
+            <input id="Agenda" type="text" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-2">
+            Link Zoom
+        </label>
+        <div class="col-md-6 form-control">
+            <input id="Link" type="text" />
+        </div>
+    </div>
+    <button class="btn btn-primary" onclick="Save()"> Login </button>
+
+    <table class="table table-striped table-however">
+        <thead class="bg-aqua">
+            <tr>
+                <th>No</th>
+                <th>PIC</th>
+                <th>Zoom ACC</th>
+                <th>Date&Time</th>
+                <th>Agenda</th>
+                <th>Link</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    </table>
+
+</section>
+
+@section scripts
+{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(() => {
+            //Read();
+            GetPic();
+            GetZoom();
+        });
+
+        const Save = () => {
+            var data = new Object();
+            data.picId = $("#Pic").val();
+            data.zoomAccountId = $("#Zoom").val();
+            data.startDate = $("#startDate").val();
+            data.agenda = $("#Agenda").val();
+            data.linkAddress = $("#Link").val();
+
+            $.ajax({
+                "url": "@Url.Action("Save","Home")",
+                "type": "Get",
+                "data": data,
+                "datatype": "json"
+            }).then((data) => {
+                if (data != null) {
+                    alert("ok");
+                }
+                else {
+                    alert("gagal");
+                }
+            });
+
+        }
+
+        
+
+        const GetPic = () => {
+            $.ajax({
+                "url": "@Url.Action("GetPic","Home")",
+                "type": "Get",
+                "datatype": "json"
+            }).then((data) => {
+                var pic = $("#Pic");
+                pic.html('');
+                $.each(data, (i, value) => {
+                    $("<option></option>").val(value.id).text(value.name).appendTo(pic);
+                });
+            })
+        }
+
+        const GetZoom = () => {
+            $.ajax({
+                "url": "@Url.Action("GetZoom","Home")",
+                "type": "Get",
+                "datatype": "json"
+            }).then((data) => {
+                var zoom = $("#Zoom");
+                zoom.html('');
+                $.each(data, (i, value) => {
+                    $("<option></option>").val(value.id).text(value.name).appendTo(zoom);
+                });
+            })
+        }
+    </script>
+
+}
